@@ -40,7 +40,9 @@ pdata=data.frame(GRIP=94,ARM=88)
 predict(model.A,pdata,interval="prediction")
 ```
 
-We made the model and the prediction interval went from -1.72 to a positive 3.13.
+We made the model and the prediction interval went from -1.72 to a positive 3.13. The adjusted R Squared value was .467.
+
+
 
 ## Now with ggplot - first select the basic data
 
@@ -85,3 +87,22 @@ summary.lm(model.1)
 model.G <- lm(SIMS~GRIP,data=dataF)
 summary.lm(model.G)
 ```
+
+# Inferential  (Build linear model)
+  
+```{r}
+model.GA <- lm(SIMS~GRIP+ARM,data=dataF)
+summary.lm(model.GA)
+pdata=data.frame(GRIP=94,ARM=88)
+predict(model.GA,pdata,interval="prediction")
+```
+
+When we created this prediction model the lower half went from -2.13 to a positive 2.43 with an adjusted R squared value of .5358. 
+
+##Compare the 2 models note adjR^2 is larger Residual SE is smaller in model.2
+
+```{r}
+anova(model.A,model.GA)
+```
+
+There was a significant drop from model.A to model.GA. The error went from 217 to 188. We can state that this is an improvement. Note that the adjusted R Squared for GA was equal to .53 while the adjusted R Squared for model.A was equivalent to .46.
