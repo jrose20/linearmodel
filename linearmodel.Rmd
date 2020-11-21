@@ -72,7 +72,8 @@ pdata=data.frame(GRIP=94,ARM=88)
 predict(model.G,pdata,interval="prediction")
 ```
 
-The prediction model went from a -3.10 to a postive 2.03
+The prediction model went from a -3.10 to a postive 2.03. The adjusted .R Squared is equal to .4053.
+
 
 # Inferential  (Build linear model)
   
