@@ -107,3 +107,4 @@ anova(model.A,model.GA)
 ```
 
 There was a significant drop from model.A to model.GA. The error went from 217 to 188. We can state that this is an improvement. Note that the adjusted R Squared for GA was equal to .53 while the adjusted R Squared for model.A was equivalent to .46.
+
