@@ -22,12 +22,66 @@ require(knitr)
 ## Now with ggplot - first select the basic data
 
 ```{r}
-basicNN <- ggplot(dataF,aes(y=SIMS,x=ARM))
+basicA <- ggplot(dataF,aes(y=SIMS,x=ARM))
 ```
 
 ## Now add in scatterplot
 
 ```{r}
-basicNN + geom_point()+ geom_smooth(method=lm)
+basicA + geom_point()+ geom_smooth(method=lm)
 ``` 
+
+# Inferential  (Build linear model)
+  
+```{r}
+model.A <- lm(SIMS~ARM,data=dataF)
+summary.lm(model.A)
+pdata=data.frame(GRIP=94,ARM=88)
+predict(model.A,pdata,interval="prediction")
+```
+
+We made the model and the prediction interval went from -1.72 to a positive 3.13.
+
+## Now with ggplot - first select the basic data
+
+```{r}
+basicG <- ggplot(dataF,aes(y=SIMS,x=GRIP))
+```
+
+## Now add in scatterplot
+
+```{r}
+basicG + geom_point()+ geom_smooth(method=lm)
+``` 
+
+# Inferential  (Build linear model)
+  
+```{r}
+model.1 <- lm(SIMS~GRIP,data=dataF)
+summary.lm(model.1)
+```
+
+# Inferential  (Build linear model)
+  
+```{r}
+model.G <- lm(SIMS~GRIP,data=dataF)
+summary.lm(model.G)
+pdata=data.frame(GRIP=94,ARM=88)
+predict(model.G,pdata,interval="prediction")
+```
+
+The prediction model went from a -3.10 to a postive 2.03
+
+# Inferential  (Build linear model)
+  
+```{r}
+model.1 <- lm(SIMS~GRIP+ARM,data=dataF)
+summary.lm(model.1)
+```
+
+# Inferential  (Build linear model)
+  
+```{r}
+model.G <- lm(SIMS~GRIP,data=dataF)
+summary.lm(model.G)
 ```
